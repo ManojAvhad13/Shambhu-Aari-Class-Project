@@ -62,9 +62,9 @@ app.post('/send-email', async (req, res) => {
     try {
         await transporter.sendMail(mailOptions);
         // Add start & end date
-        const startDate = new Date().toLocaleDateString();
-        const endDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString(); // +30 days
-        saveStudent({ name, phone, mode, address, startDate, endDate });
+        // const startDate = new Date().toLocaleDateString();
+        // const endDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString(); // +30 days
+        saveStudent({ name, phone, mode, address });
         res.status(200).send('Email sent successfully');
     } catch (err) {
         console.error(err);
