@@ -14,14 +14,15 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-mongoose.connect('mongodb://localhost:27017/shambhu-fashion-design', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
-    console.log("MongoDB connected successfully");
-}).catch((err) => {
-    console.error("MongoDB connection failed:", err);
-});
+// const mongoose = require('mongoose');
+
+mongoose.connect('mongodb+srv://manojavhad04:xJe1qhY5dyx1g6vV@cluster0.h3hxvmw.mongodb.net/shambhu-aari-design-class?retryWrites=true&w=majority')
+    .then(() => {
+        console.log("MongoDB connected successfully");
+    })
+    .catch((err) => {
+        console.error("MongoDB connection failed:", err);
+    });
 
 
 
