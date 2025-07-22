@@ -68,6 +68,9 @@ app.post('/send-email', async (req, res) => {
         }
     });
 
+    // console.log("Received Join Request:", { name, phone, mode, address });
+
+
     // Email options
     const mailOptions = {
 
@@ -119,6 +122,10 @@ app.post('/send-email', async (req, res) => {
         // Store in MongoDB
         const student = new Student({ name, phone, address, mode });
         await student.save();
+
+        // ✅ Send email
+        await transporter.sendMail(mailOptions);
+
 
         // Send email & SMS (keep your existing Nodemailer + SMS logic here)
 
