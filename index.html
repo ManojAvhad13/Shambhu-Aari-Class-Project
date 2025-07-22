@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shambhu Fashion Design - Aari Work Classes</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,6 +44,10 @@
             color: #B8860B;
         }
 
+        .bg-gold {
+            background-color: #D4AF37;
+        }
+
         .modal-backdrop {
             background-color: rgba(0, 0, 0, 0.6);
         }
@@ -52,10 +55,9 @@
 </head>
 
 <body class="bg-gray-100">
-    <!-- Your complete HTML remains unchanged until the script -->
 
     <!-- Navigation Header -->
-    <header class="bg-maroon text-white py-4 shadow-md">
+    <!-- <header class="bg-maroon text-white py-4 shadow-md">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <h1 class="text-2xl font-playfair tracking-wider">Shambhu Fashion Design</h1>
             <nav class="space-x-6">
@@ -64,17 +66,58 @@
                 <a href="#contact" class="hover:text-gold transition">Contact</a>
             </nav>
         </div>
+    </header> -->
+
+    <header class="bg-maroon text-white py-4 shadow-md">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl font-playfair tracking-wider">Shambhu Fashion Design</h1>
+
+            <!-- Mobile menu button -->
+            <button id="menu-button" class="md:hidden focus:outline-none">
+                <!-- Hamburger Icon -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="#classes" class="hover:text-gold transition">Classes</a>
+                <a href="#services" class="hover:text-gold transition">Services</a>
+                <a href="#contact" class="hover:text-gold transition">Contact</a>
+            </nav>
+        </div>
+
+        <!-- Mobile Nav Links -->
+        <nav id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+            <a href="#classes" class="block py-2 hover:text-gold transition">Classes</a>
+            <a href="#services" class="block py-2 hover:text-gold transition">Services</a>
+            <a href="#contact" class="block py-2 hover:text-gold transition">Contact</a>
+        </nav>
     </header>
+
+    <!-- Toggle Menu Script -->
+    <script>
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
 
     <!-- Main Section -->
     <main class="container mx-auto px-4 py-10">
         <div class="bg-white rounded-xl shadow-lg p-6 max-w-4xl mx-auto text-maroon">
 
             <div class="text-center mb-6">
-                <h2 class="font-devanagari text-5xl font-bold mb-2">आरी वर्क क्लासेस</h2>
-                <p class="text-xl">Aari Work Classes for All Levels</p>
+                <h2 class="font-devanagari text-4xl font-bold mb-2">Shambhu Fashion Design</h2>
+                <p class="text-[20px] border border-maroon bg-maroon text-white rounded-3xl p-2 inline-block">
+                    Aari Work
+                    Classes</p>
             </div>
-
 
             <!-- Class Info -->
             <section id="classes" class="space-y-4 text-center">
@@ -93,8 +136,28 @@
                             </svg>
                         </div>
                         <h4 class="text-xl md:text-2xl font-bold text-maroon mb-2 tracking-wide">Online Classes</h4>
-                        <p class="text-base md:text-lg text-gray-700 font-medium">Join from anywhere, flexible timings!
+                        <p class="text-base md:text-lg text-gray-700 font-medium flex items-center gap-2">
+                            Join from anywhere on
+                            <span class="flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
+                                    <rect width="16" height="16" x="12" y="16" fill="#fff"
+                                        transform="rotate(-90 20 24)"></rect>
+                                    <polygon fill="#1e88e5" points="3,17 3,31 8,32 13,31 13,17 8,16"></polygon>
+                                    <path fill="#4caf50" d="M37,24v14c0,1.657-1.343,3-3,3H13l-1-5l1-5h14v-7l5-1L37,24z">
+                                    </path>
+                                    <path fill="#fbc02d" d="M37,10v14H27v-7H13l-1-5l1-5h21C35.657,7,37,8.343,37,10z">
+                                    </path>
+                                    <path fill="#1565c0" d="M13,31v10H6c-1.657,0-3-1.343-3-3v-7H13z"></path>
+                                    <polygon fill="#e53935" points="13,7 13,17 3,17"></polygon>
+                                    <polygon fill="#2e7d32" points="38,24 37,32.45 27,24 37,15.55"></polygon>
+                                    <path fill="#4caf50"
+                                        d="M46,10.11v27.78c0,0.84-0.98,1.31-1.63,0.78L37,32.45v-16.9l7.37-6.22C45.02,8.8,46,9.27,46,10.11z">
+                                    </path>
+                                </svg>
+                                <span class="font-bold">Google Meet</span>
+                            </span>
                         </p>
+
                         <span
                             class="mt-3 inline-block bg-maroon text-white px-4 py-1 rounded-full text-sm font-semibold shadow">Online</span>
                     </div>
@@ -118,13 +181,12 @@
 
             <!-- Join & Inquiry -->
             <div class="flex flex-wrap justify-center gap-4 my-10">
-                <button id="joinBtn"
-                    class="bg-maroon text-white font-semibold py-3 px-6 rounded-lg hover:bg-opacity-90 hover:scale-105 transition-transform">
+                <button type="button"
+                    class="joinBtn bg-maroon text-white font-semibold py-3 px-6 rounded-lg hover:bg-opacity-90 hover:scale-105 transition-transform">
                     Join Now
                 </button>
-                <button id="inquiryBtn"
-                    onclick="document.getElementById('inquiryModal').classList.remove('hidden'); document.getElementById('inquiryModal').classList.add('flex');"
-                    class="border-2 border-maroon text-maroon font-semibold py-3 px-6 rounded-lg hover:bg-maroon hover:text-maroon hover:scale-105 transition-transform">
+                <button type="button"
+                    class="inquiryBtn border-2 border-maroon text-maroon font-semibold py-3 px-6 rounded-lg hover:bg-maroon hover:text-maroon hover:scale-105 transition-transform">
                     Inquiry
                 </button>
             </div>
@@ -145,23 +207,74 @@
                         <h4 class="text-xl font-semibold text-maroon">Bridal Blouse</h4>
                         <p class="mt-2 text-gray-700">Customized bridal blouse with traditional and modern fusion.</p>
                     </div>
+
+                    <div class="bg-white shadow-md rounded-lg p-4 text-center border border-maroon/30">
+                        <h4 class="text-xl font-semibold text-maroon">Thread Work (धागा काम)</h4>
+                        <p class="mt-2 text-gray-700">Intricate hand embroidery using colorful threads to create
+                            elegant, traditional patterns.</p>
+                    </div>
+
+                    <div class="bg-white shadow-md rounded-lg p-4 text-center border border-maroon/30">
+                        <h4 class="text-xl font-semibold text-maroon">मणी वर्क | कुंदन वर्क</h4>
+                        <p class="mt-2 text-gray-700">Decorative beadwork and Kundan stone embellishments that add
+                            sparkle and richness to any fabric.</p>
+                    </div>
+
+                    <div class="bg-white shadow-md rounded-lg p-4 text-center border border-maroon/30">
+                        <h4 class="text-xl font-semibold text-maroon">Fabric Painting</h4>
+                        <p class="mt-2 text-gray-700">Hand-painted designs on fabric, blending creativity with tradition
+                            for a personalized touch.</p>
+                    </div>
                     <div class="bg-white shadow-md rounded-lg p-4 text-center border border-maroon/30 font-devanagari">
-                        <h4 class="text-xl font-semibold text-maroon">सर्व प्रकारचे ब्लाउज</h4>
-                        <p class="mt-2 text-gray-700">तयार करून मिळेल व क्लासेस घेतले जातील.</p>
+                        <h4 class="text-xl font-semibold text-maroon">All Types of Blouse</h4>
+                        <p class="mt-2 text-gray-700">Like Designer Blouse, Traditional Blouse, Patchwork Blouse, Bridal
+                            Blouse, Maggam Aari-Work Blouse Sleeve & Neck Design Customization</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Gallery -->
+            <!-- Offer Section -->
+            <section id="offer" class="my-12 flex justify-center">
+                <div
+                    class="relative bg-gradient-to-r from-yellow-300 via-yellow-200 to-yellow-100 text-maroon rounded-2xl shadow-2xl px-10 py-8 flex flex-col items-center max-w-2xl w-full border-4 border-maroon text-center overflow-hidden">
+                    <!-- Decorative Confetti Icons -->
+                    <div class="absolute top-6 left-6 text-4xl opacity-30">🎉</div>
+                    <div class="absolute top-6 right-6 text-4xl opacity-30">🎉</div>
+                    <!-- Main Offer Heading -->
+                    <h3 class="text-3xl font-extrabold mb-3 tracking-wide drop-shadow-lg">
+                        🎨 Exclusive Launch Offer!
+                    </h3>
+                    <!-- Subheading -->
+                    <p class="text-lg font-semibold mb-2">
+                        Be among the <span
+                            class="text-maroon font-bold underline underline-offset-4 decoration-wavy decoration-yellow-500">first
+                            10 admissions</span> and enjoy
+                    </p>
+                    <!-- Highlighted Free Offer -->
+                    <div
+                        class="bg-maroon text-yellow-100 rounded-lg px-6 py-3 my-2 text-2xl font-bold shadow-md animate-bounce">
+                        Fabric Painting <span class="text-green-300 animate-pulse">FREE</span>
+                    </div>
+                    <!-- Call to Action
+                    <button
+                        class="mt-5 px-8 py-3 bg-gradient-to-r from-maroon via-pink-700 to-maroon text-yellow-100 text-lg rounded-full font-bold shadow hover:scale-105 hover:shadow-xl transition-all duration-150">
+                        Claim Your Spot
+                    </button> -->
+                    <!-- Decorative Bottom Confetti -->
+                    <div class="absolute bottom-6 left-10 text-2xl opacity-20">✨</div>
+                    <div class="absolute bottom-6 right-10 text-2xl opacity-20">✨</div>
+                </div>
+            </section>
 
-            <!-- Gallery -->
+
+
+            <!-- Gallery Section -->
             <section id="gallery" class="my-10">
                 <h3 class="text-2xl font-bold text-center text-maroon mb-6">Gallery - Sample Designs</h3>
-
-                <!-- Mobile View: Horizontal Scroll -->
-                <!-- Mobile: show 4 images and scroll vertically for more -->
+                <!-- Mobile Only -->
                 <div class="block md:hidden max-h-[300px] overflow-y-auto px-2">
                     <div class="grid grid-cols-2 gap-2">
+                        <!-- Add images as needed; sample images below -->
                         <div class="rounded-lg shadow-lg overflow-hidden">
                             <img src="/Images/design1.png" alt="Design 1" class="w-full h-auto object-cover" />
                         </div>
@@ -186,11 +299,9 @@
                         <div class="rounded-lg shadow-lg overflow-hidden">
                             <img src="/Images/design8.jpg" alt="Design 8" class="w-full h-auto object-cover" />
                         </div>
-
                         <div class="rounded-lg shadow-lg overflow-hidden">
                             <img src="/Images/design9.jpg" alt="Design 9" class="w-full h-auto object-cover" />
                         </div>
-
                         <div class="rounded-lg shadow-lg overflow-hidden">
                             <img src="/Images/design10.jpg" alt="Design 10" class="w-full h-auto object-cover" />
                         </div>
@@ -203,155 +314,130 @@
                         <div class="rounded-lg shadow-lg overflow-hidden">
                             <img src="/Images/design13.jpeg" alt="Design 13" class="w-full h-auto object-cover" />
                         </div>
-
                         <div class="rounded-lg shadow-lg overflow-hidden">
                             <img src="/Images/design14.webp" alt="Design 14" class="w-full h-auto object-cover" />
                         </div>
-
                         <div class="rounded-lg shadow-lg overflow-hidden">
                             <img src="/Images/design15.jpeg" alt="Design 15" class="w-full h-auto object-cover" />
                         </div>
-
                         <div class="rounded-lg shadow-lg overflow-hidden">
                             <img src="/Images/design16.jpg" alt="Design 16" class="w-full h-auto object-cover" />
                         </div>
-
-                        <!-- Add more as needed -->
-
-                        <!-- Desktop View: Grid Layout -->
-                        <div class="hidden md:grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design1.png" alt="Design 1"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design3.jpg" alt="Design 3"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design4.jpg" alt="Design 4"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design5.jpg" alt="Design 5"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design6.jpg" alt="Design 6"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design7.jpg" alt="Design 7"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design8.jpg" alt="Design 8"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design9.jpg" alt="Design 9"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design10.jpg" alt="Design 10"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design11.jpeg" alt="Design 11"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design12.webp" alt="Design 12"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design13.jpeg" alt="Design 13"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design14.webp" alt="Design 14"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design15.jpeg" alt="Design 15"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-
-                            <div class="overflow-hidden rounded-lg shadow-lg group">
-                                <img src="/Images/design16.jpg" alt="Design 16"
-                                    class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                            </div>
-
-                            <!-- Add remaining image cards here... -->
-                        </div>
+                    </div>
+                </div>
+                <!-- Desktop Only -->
+                <div class="hidden md:grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design1.png" alt="Design 1"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design3.jpg" alt="Design 3"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design4.jpg" alt="Design 4"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design5.jpg" alt="Design 5"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design6.jpg" alt="Design 6"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design7.jpg" alt="Design 7"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design8.jpg" alt="Design 8"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design9.jpg" alt="Design 9"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design10.jpg" alt="Design 10"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design11.jpeg" alt="Design 11"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design12.webp" alt="Design 12"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design13.jpeg" alt="Design 13"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design14.webp" alt="Design 14"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design15.jpeg" alt="Design 15"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-lg group">
+                        <img src="/Images/design16.jpg" alt="Design 16"
+                            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                </div>
             </section>
 
-
-
-
-            <!-- Join & Inquiry 2 -->
+            <!-- Join & Inquiry (repeat for convenient place on page) -->
             <div class="flex flex-wrap justify-center gap-4 my-10">
-                <button id="joinBtn"
-                    onclick="document.getElementById('joinModal').classList.remove('hidden'); document.getElementById('joinModal').classList.add('flex');"
-                    class="bg-maroon text-white font-semibold py-3 px-6 rounded-lg hover:bg-opacity-90 hover:scale-105 transition-transform">
+                <button type="button"
+                    class="joinBtn bg-maroon text-white font-semibold py-3 px-6 rounded-lg hover:bg-opacity-90 hover:scale-105 transition-transform">
                     Join Now
                 </button>
-                <button id="inquiryBtn"
-                    onclick="document.getElementById('inquiryModal').classList.remove('hidden'); document.getElementById('inquiryModal').classList.add('flex');"
-                    class="border-2 border-maroon text-maroon font-semibold py-3 px-6 rounded-lg hover:bg-maroon hover:text-maroon hover:scale-105 transition-transform">
+                <button type="button"
+                    class="inquiryBtn border-2 border-maroon text-maroon font-semibold py-3 px-6 rounded-lg hover:bg-maroon hover:text-maroon hover:scale-105 transition-transform">
                     Inquiry
                 </button>
             </div>
 
             <!-- Join Now Modal -->
             <div id="joinModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-backdrop">
-                <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm p-6 text-maroon relative">
+                <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm p-6 text-maroon relative flex flex-col">
                     <button id="closeJoinModal"
-                        class="absolute top-2 right-3 text-2xl font-bold text-maroon hover:text-gold">&times;</button>
+                        class="absolute top-2 right-3 text-2xl font-bold text-maroon hover:text-gold"
+                        type="button">&times;</button>
                     <h3 class="font-playfair text-2xl text-center mb-4">Join the Class</h3>
-                    <form id="joinForm">
+                    <form id="joinForm" autocomplete="off">
                         <div class="mb-4">
                             <label for="name" class="block text-sm font-bold mb-2">Full Name</label>
-                            <input type="text" id="name" name="name"
+                            <input type="text" id="name" name="name" placeholder="Enter your name"
                                 class="w-full px-3 py-2 border border-maroon/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-maroon"
                                 required>
                         </div>
                         <div class="mb-6">
                             <label for="phone" class="block text-sm font-bold mb-2">Phone Number</label>
-                            <input type="tel" id="phone" name="phone"
+                            <input type="tel" id="phone" name="phone" inputmode="numeric" pattern="[0-9]{10}"
+                                maxlength="10" minlength="10" autocomplete="tel"
+                                placeholder="Enter 10-digit phone number"
                                 class="w-full px-3 py-2 border border-maroon/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-maroon"
-                                required>
+                                required oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                title="Please enter exactly 10 digits">
                         </div>
-
                         <div class="mb-6">
                             <label for="address" class="block text-sm font-bold mb-2">Address</label>
-                            <input type="text" id="address" name="address"
+                            <input type="text" id="address" name="address" placeholder="Your address"
                                 class="w-full px-3 py-2 border border-maroon/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-maroon"
                                 required>
                         </div>
-
-
-
-
                         <div class="mb-6">
                             <label for="mode" class="block text-sm font-bold mb-2">Select Mode</label>
                             <select id="mode" name="mode" required
                                 class="w-full px-3 py-2 border border-maroon/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-maroon">
                                 <option value="" disabled selected>Select mode</option>
-                                <option value="Online">Online</option>
-                                <option value="Offline">Offline</option>
+                                <option value="Online">Online Class</option>
+                                <option value="Offline">Offline Class</option>
                             </select>
                         </div>
                         <button type="submit"
@@ -359,15 +445,16 @@
                             Submit Details
                         </button>
                     </form>
-
                 </div>
             </div>
 
             <!-- Inquiry Modal -->
             <div id="inquiryModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-backdrop">
-                <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm p-6 text-maroon relative text-center">
+                <div
+                    class="bg-white rounded-lg shadow-2xl w-full max-w-sm p-6 text-maroon relative text-center flex flex-col">
                     <button id="closeInquiryModal"
-                        class="absolute top-2 right-3 text-2xl font-bold text-maroon hover:text-gold">&times;</button>
+                        class="absolute top-2 right-3 text-2xl font-bold text-maroon hover:text-gold"
+                        type="button">&times;</button>
                     <h3 class="font-playfair text-2xl mb-4">For Inquiry</h3>
                     <p>Call me</p>
                     <div class="space-y-4">
@@ -387,7 +474,7 @@
                             </svg>
                             <p class="text-lg">shobhanaikwade99@gmail.com</p>
                         </div>
-                        <div justify-center class="flex items-center gap-4">
+                        <div class="flex items-center gap-4 justify-center">
                             <a href="https://www.instagram.com/shambhuaariwork996/" target="_blank"
                                 class="hover:text-gold flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current"
@@ -397,7 +484,6 @@
                                 </svg>
                                 Instagram
                             </a>
-
                             <a href="https://wa.me/919960999850" target="_blank"
                                 class="hover:text-gold flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current"
@@ -412,7 +498,6 @@
                 </div>
             </div>
 
-
             <!-- Fees -->
             <section id="fees" class="text-center space-y-6 my-6">
                 <div class="inline-block bg-maroon text-white px-10 py-4 rounded-xl shadow-lg">
@@ -423,7 +508,43 @@
                     <p class="text-lg">Offline Fees</p>
                     <p class="text-3xl font-bold">₹5500 Only</p>
                 </div>
+
+
             </section>
+            <!-- <div class="inline-block bg-maroon text-white px-10 py-4 rounded-xl shadow-lg flex flex-col items-center">
+                <p class="text-lg">🎉🎉 <strong>With Free Material</strong> 🎉🎉</p>
+            </div> -->
+
+            <div
+                class="relative inline-block bg-gradient-to-r from-maroon via-red-800 to-pink-900 text-yellow-100 px-6 sm:px-10 md:px-14 py-6 rounded-2xl shadow-2xl flex flex-col items-center border-4 border-yellow-300 overflow-hidden group max-w-[90vw] sm:max-w-md w-full text-center">
+
+                <!-- Decorative Top Confetti -->
+                <span
+                    class="absolute left-4 top-3 sm:left-6 sm:top-4 text-lg sm:text-2xl opacity-40 group-hover:opacity-70 transition">🎉</span>
+                <span
+                    class="absolute right-4 top-3 sm:right-6 sm:top-4 text-lg sm:text-2xl opacity-40 group-hover:opacity-70 transition">🎉</span>
+
+                <!-- Offer Content -->
+                <p class="text-lg sm:text-xl font-bold tracking-wide my-2 px-2">
+                    🎉
+                    <span class="bg-yellow-200 text-maroon px-3 py-1 mx-1 rounded-lg shadow animate-pulse">
+                        With Free Material
+                    </span>
+                    🎉
+                </p>
+
+                <!-- Optional Price Tag -->
+                <!--
+  <div class="my-3 bg-yellow-400 text-maroon px-6 py-2 rounded-full font-extrabold text-xl sm:text-2xl shadow-lg border-2 border-maroon animate-bounce">
+    ₹5500 Only
+  </div>
+  -->
+
+                <!-- Decorative Bottom Sparkles -->
+                <span class="absolute left-6 bottom-3 text-base sm:text-xl opacity-20">✨</span>
+                <span class="absolute right-6 bottom-3 text-base sm:text-xl opacity-20">✨</span>
+            </div>
+
 
             <!-- Contact -->
             <section id="contact" class="text-center mt-10 space-y-4 border-t pt-6">
@@ -431,7 +552,7 @@
                 <p class="text-lg font-bold">📞 9960999850</p>
                 <p class="text-lg font-devanagari">📍 लासलगाव, महावीर नगर</p>
                 <p class="text-md">📧 shobhanaikwade99@gmail.com</p>
-                <p class="pt-3 font-semibold">Owner: SHOBHA NAIKWADE</p>
+                <p class="pt-0.1 font-semibold bg-maroon text-white py-2">Owner: SHOBHA NAIKWADE</p>
             </section>
         </div>
     </main>
@@ -442,12 +563,7 @@
             <p class="text-[12px] sm:text-base">© 2025 Shambhu Fashion Design. All Rights Reserved.</p>
             <p class="text-[12px] sm:text-base">Created by - Manoj Avhad.</p>
         </div>
-
         <div class="flex justify-center items-center gap-2 sm:gap-4 mt-4 text-sm sm:text-base">
-            <!-- <a href="#" class=" text-[12px] hover:text-gold transition-colors">Facebook</a>
-            <a href="#" class="text-[12px] hover:text-gold transition-colors">Instagram</a>
-            <a href="#" class="text-[12px] hover:text-gold transition-colors">WhatsApp</a> -->
-
             <a href="https://www.instagram.com/shambhuaariwork996/" target="_blank"
                 class="hover:text-gold flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -456,7 +572,6 @@
                 </svg>
                 Instagram
             </a>
-
             <a href="https://wa.me/919960999850" target="_blank" class="hover:text-gold flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 32 32">
                     <path
@@ -464,7 +579,6 @@
                 </svg>
                 WhatsApp
             </a>
-
             <a href="https://www.facebook.com" target="_blank" class="hover:text-gold flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                     <path
@@ -475,67 +589,92 @@
         </div>
     </footer>
 
-
-    <!-- Reuse the same modals and JS logic you already have yes -->
-    <!-- Copy your joinModal, inquiryModal, successBox, and <script> section below -->
-
-
     <!-- Success Message Box -->
     <div id="successBox"
         class="fixed top-5 right-5 bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg hidden transition-opacity duration-300">
         Details submitted successfully!
     </div>
 
-    <!-- Notification Script -->
+    <!-- App Script -->
     <script>
+        // Modal logic and accessibility
+        const joinForm = document.getElementById('joinForm');
+        const joinModal = document.getElementById('joinModal');
+        const inquiryModal = document.getElementById('inquiryModal');
+        const successBox = document.getElementById('successBox');
+
+        function closeModal(modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Join Now: all buttons
+        document.querySelectorAll('.joinBtn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                joinModal.classList.remove('hidden');
+                joinModal.classList.add('flex');
+            });
+        });
+
+        // Inquiry: all buttons
+        document.querySelectorAll('.inquiryBtn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                inquiryModal.classList.remove('hidden');
+                inquiryModal.classList.add('flex');
+            });
+        });
+
+        // Close handlers
+        document.getElementById('closeJoinModal').addEventListener('click', () => closeModal(joinModal));
+        document.getElementById('closeInquiryModal').addEventListener('click', () => closeModal(inquiryModal));
+
+        // Notification logic with fallback
         function showNotification(message) {
-            if (Notification.permission === "granted") {
-                new Notification("Shambhu Fashion Design", {
-                    body: message,
-                    icon: "https://cdn-icons-png.flaticon.com/512/561/561127.png"
-                });
-            } else if (Notification.permission !== "denied") {
-                Notification.requestPermission().then(permission => {
-                    if (permission === "granted") {
-                        new Notification("Shambhu Fashion Design", {
-                            body: message
-                        });
-                    }
-                });
+            if ("Notification" in window) {
+                if (Notification.permission === "granted") {
+                    new Notification("Shambhu Fashion Design", {
+                        body: message,
+                        icon: "https://cdn-icons-png.flaticon.com/512/561/561127.png"
+                    });
+                } else if (Notification.permission !== "denied") {
+                    Notification.requestPermission().then(permission => {
+                        if (permission === "granted") {
+                            new Notification("Shambhu Fashion Design", { body: message });
+                        } else {
+                            successBox.textContent = message;
+                            successBox.classList.remove('hidden');
+                        }
+                    });
+                } else {
+                    successBox.textContent = message;
+                    successBox.classList.remove('hidden');
+                }
+            } else {
+                successBox.textContent = message;
+                successBox.classList.remove('hidden');
             }
         }
 
-        const joinForm = document.getElementById('joinForm');
-        const joinModal = document.getElementById('joinModal');
-        const successBox = document.getElementById('successBox');
-
+        // Form submission
         joinForm.addEventListener('submit', function (event) {
             event.preventDefault();
 
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
             const mode = document.getElementById('mode').value;
-            const address = document.getElementById('address').value;
+            const address = document.getElementById('address').value.trim();
 
-            const templateParams = {
-                name: name,
-                phone: phone,
-                mode: mode,
-                address: address,
-            };
-
-            fetch('https://shambhu-aari-class-project.onrender.com/send-email', {
+            fetch('http://localhost:5000/send-email', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, phone, mode, address })
             })
                 .then(response => {
                     if (response.ok) {
                         closeModal(joinModal);
                         joinForm.reset();
-                        showNotification("Your booking is confirmed!");
+                        showNotification("Thank You! Your booking is confirmed!");
+                        successBox.textContent = "Details submitted successfully!";
                         successBox.classList.remove('hidden');
                         setTimeout(() => {
                             successBox.classList.add('hidden');
@@ -548,24 +687,6 @@
                     alert("Submission failed: " + error.message);
                 });
         });
-
-        document.getElementById('closeInquiryModal').addEventListener('click', function () {
-            const modal = document.getElementById('inquiryModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        });
-
-        function closeModal(modal) {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        document.getElementById('joinBtn').addEventListener('click', () => {
-            joinModal.classList.remove('hidden');
-            joinModal.classList.add('flex');
-        });
-
-        document.getElementById('closeJoinModal').addEventListener('click', () => closeModal(joinModal));
     </script>
 </body>
 

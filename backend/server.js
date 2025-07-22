@@ -1,9 +1,10 @@
 const express = require('express');
+const Student = require('./models/Student');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const fs = require('fs');
-const path = require('path');
+const mongoose = require('mongoose');
+
 
 const app = express();
 const PORT = 5000;
@@ -13,8 +14,20 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+mongoose.connect('mongodb://localhost:27017/shambhu-fashion-design', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log("MongoDB connected successfully");
+}).catch((err) => {
+    console.error("MongoDB connection failed:", err);
+});
 
-const DATA_FILE = path.join(__dirname, 'students.json');
+
+
+
+
+// const DATA_FILE = path.join(__dirname, 'students.json');
 const ADMIN_CREDENTIALS = {
     id: 'shobha-admin',
     password: 'shambhu9950'
@@ -22,10 +35,21 @@ const ADMIN_CREDENTIALS = {
 
 // Helper to get data and persist to JSON file
 const saveStudent = (student) => {
-    const data = fs.existsSync(DATA_FILE) ? JSON.parse(fs.readFileSync(DATA_FILE)) : [];
-    data.push(student);
-    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+    Student.find()
+        .then(data => res.json(data))
+        .catch(err => res.status(500).send("Error fetching students"));
+
 };
+
+app.delete('/students/:id', async (req, res) => {
+    try {
+        await Student.findByIdAndDelete(req.params.id);
+        res.status(200).send("Student deleted");
+    } catch (err) {
+        res.status(500).send("Failed to delete student");
+    }
+});
+
 
 // POST route to send email
 app.post('/send-email', async (req, res) => {
@@ -39,14 +63,13 @@ app.post('/send-email', async (req, res) => {
         service: 'gmail',
         auth: {
             user: 'avhadmanu58@gmail.com',
-            pass: 'skqc lnck jvuo avnz' // Use App Password if 2FA is enabled
+            pass: 'skqc lnck jvuo avnz'
         }
     });
 
     // Email options
     const mailOptions = {
-        // shobhanaikwade99@gmail.com
-        // avhadmanu58@gmail.com
+
         from: 'avhadmanu58@gmail.com',
         to: 'avhadmanu58@gmail.com', // or your own email
         subject: 'New Join Request - Shambhu Fashion Design',
@@ -60,22 +83,26 @@ app.post('/send-email', async (req, res) => {
     };
 
     try {
-        await transporter.sendMail(mailOptions);
-        // Add start & end date
-        // const startDate = new Date().toLocaleDateString();
-        // const endDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString(); // +30 days
-        saveStudent({ name, phone, mode, address });
-        res.status(200).send('Email sent successfully');
+        // Store in MongoDB
+        const student = new Student({ name, phone, address, mode });
+        await student.save();
+
+        // Send email & SMS (keep your existing Nodemailer + SMS logic here)
+
+        res.status(200).json({ message: 'Submitted successfully' });
     } catch (err) {
-        console.error(err);
-        res.status(500).send('Failed to send email');
+        res.status(500).json({ message: 'Error saving student', error: err.message });
     }
 });
 
 // Fetch all students data
-app.get('/students', (req, res) => {
-    const data = fs.existsSync(DATA_FILE) ? JSON.parse(fs.readFileSync(DATA_FILE)) : [];
-    res.json(data);
+app.get('/students', async (req, res) => {
+    try {
+        const students = await Student.find().sort({ _id: -1 }); // Latest first
+        res.json(students);
+    } catch (err) {
+        res.status(500).json({ message: 'Error fetching students', error: err.message });
+    }
 });
 
 // Admin login route

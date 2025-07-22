@@ -1,4 +1,3 @@
-<!-- File: public/admin.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,8 +31,7 @@
                     <th class="p-3 text-left">Phone</th>
                     <th class="p-3 text-left">Mode</th>
                     <th class="p-3 text-left">Address</th>
-                    <!-- <th class="p-3 text-left">Start Date</th>
-                    <th class="p-3 text-left">End Date</th> -->
+                    <th class="p-3 text-left">Actions</th>
                 </tr>
             </thead>
             <tbody id="studentTable" class="text-sm text-gray-800"></tbody>
@@ -45,12 +43,15 @@
         const loginBox = document.getElementById('loginBox');
         const dashboard = document.getElementById('dashboard');
 
+        // Replace with your production API base if needed
+        const API_BASE = 'http://localhost:5000';
+
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const adminId = document.getElementById('adminId').value;
             const adminPassword = document.getElementById('adminPassword').value;
 
-            const res = await fetch('https://shambhu-aari-class-project.onrender.com/admin-login', {
+            const res = await fetch(`${API_BASE}/admin-login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ adminId, adminPassword })
@@ -66,20 +67,40 @@
         });
 
         async function loadStudents() {
-            const res = await fetch('https://shambhu-aari-class-project.onrender.com/students');
+            const res = await fetch(`${API_BASE}/students`);
             const students = await res.json();
             const tbody = document.getElementById('studentTable');
             tbody.innerHTML = '';
 
             for (const s of students) {
                 const row = `
-          <tr class="border-b">
-            <td class="p-3">${s.name}</td>
-            <td class="p-3">${s.phone}</td>
-            <td class="p-3">${s.mode}</td>
-            <td class="p-3">${s.address}</td>
-          </tr>`;
+                    <tr class="border-b">
+                        <td class="p-3">${s.name}</td>
+                        <td class="p-3">${s.phone}</td>
+                        <td class="p-3">${s.mode}</td>
+                        <td class="p-3">${s.address}</td>
+                        <td class="p-3">
+                            <button onclick="deleteStudent('${s._id}')" class="text-red-600 hover:underline">Delete</button>
+                        </td>
+                    </tr>
+                `;
                 tbody.innerHTML += row;
+            }
+        }
+
+        async function deleteStudent(id) {
+            const confirmDelete = confirm("Are you sure you want to delete this student?");
+            if (!confirmDelete) return;
+
+            const res = await fetch(`${API_BASE}/students/${id}`, {
+                method: 'DELETE'
+            });
+
+            if (res.ok) {
+                alert("Student deleted successfully.");
+                loadStudents();
+            } else {
+                alert("Failed to delete student.");
             }
         }
     </script>
