@@ -72,15 +72,47 @@ app.post('/send-email', async (req, res) => {
     const mailOptions = {
 
         from: 'avhadmanu58@gmail.com',
-        to: 'avhadmanu58@gmail.com', // or your own email
+        to: 'avhadmanu58@gmail.com, shobhanaikwade99@gmail.com', // or your own email
+        // subject: 'New Join Request - Shambhu Fashion Design',
+        // html: `
+        //     <h3>New Student Join Request</h3>
+        //     <p><strong>Name:</strong> ${name}</p>
+        //     <p><strong>Phone:</strong> ${phone}</p>
+        //     <p><strong>Mode:</strong> ${mode} class</p>
+        //     <p><strong>Address:</strong> ${req.body.address || 'Not provided'}</p>
+        // `
+
         subject: 'New Join Request - Shambhu Fashion Design',
         html: `
-            <h3>New Student Join Request</h3>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>Mode:</strong> ${mode} class</p>
-            <p><strong>Address:</strong> ${req.body.address || 'Not provided'}</p>
-        `
+  <div style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #e2e2e2; border-radius: 8px; font-family: Arial, sans-serif; background-color: #fff;">
+    <h2 style="color: #a8324a; text-align: center; border-bottom: 2px solid #f2f2f2; padding-bottom: 10px;">New Student Join Request</h2>
+    
+    <table style="width: 100%; margin-top: 20px;">
+      <tr>
+        <td style="padding: 8px 0; font-weight: bold;">Name:</td>
+        <td style="padding: 8px 0;">${name}</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px 0; font-weight: bold;">Phone:</td>
+        <td style="padding: 8px 0;">${phone}</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px 0; font-weight: bold;">Mode:</td>
+        <td style="padding: 8px 0;">${mode} Class</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px 0; font-weight: bold;">Address:</td>
+        <td style="padding: 8px 0;">${req.body.address || 'Not provided'}</td>
+      </tr>
+    </table>
+
+    <div style="margin-top: 30px; text-align: center; font-size: 14px; color: #555;">
+      <p>📍 Shambhu Fashion Design - Aari Work Classes</p>
+      <p>📞 For any queries, contact us directly</p>
+    </div>
+  </div>
+`
+
     };
 
     try {
